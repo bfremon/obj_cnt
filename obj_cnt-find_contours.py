@@ -26,12 +26,13 @@ def find_img_contours(input_path,
     out_prefix is the non optional output prefix string
     '''
     bs = os.path.basename(input_path)
-    fname = bs.split('.')[:-1]
+    fname = bs.split('.')[:-1][0]
     ext = bs.split('.')[-1]
     dbg(fname, ext)
     if out_prefix is None:
         raise SyntaxError('out_prefix needed')
     filename = '%s%s.%s' % (fname, out_prefix, ext)
+    dbg(filename)
     if output_path is None:
         out_path = os.path.join(os.getcwd(), filename)
     else:
